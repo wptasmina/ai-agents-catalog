@@ -1,103 +1,123 @@
-import Image from "next/image";
+import type { Metadata } from "next"
+import { AgentCatalog } from "@/components/agent-catalog"
+import { Agent } from "@/lib/types"
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+// Mock data - in a real application, this would come from an API or database
+const mockAgents: Agent[] = [
+  {
+    id: "agent-001",
+    name: "Intelligent Chatbot Pro",
+    description: "An advanced AI chatbot for enhanced customer support and query resolution.",
+    status: "Active",
+    category: "Customer Service",
+    pricingModel: "Subscription",
+  },
+  {
+    id: "agent-002",
+    name: "Voice Assistant X",
+    description: "Next-generation voice automation for internal operations and data retrieval.",
+    status: "Beta",
+    category: "Operations",
+    pricingModel: "Per-Use",
+  },
+  {
+    id: "agent-003",
+    name: "Marketing Content Generator",
+    description: "AI-powered tool to generate engaging marketing copy, ideas, and campaign outlines.",
+    status: "Active",
+    category: "Marketing",
+    pricingModel: "Subscription",
+  },
+  {
+    id: "agent-004",
+    name: "Data Analyst Agent",
+    description: "An autonomous AI agent designed to automate data analysis and report generation.",
+    status: "Archived",
+    category: "Data Analysis",
+    pricingModel: "Free Tier",
+  },
+  {
+    id: "agent-005",
+    name: "Code Review Assistant",
+    description: "AI assistant that provides instant feedback and suggestions for code quality.",
+    status: "Beta",
+    category: "Development",
+    pricingModel: "Free Tier",
+  },
+  {
+    id: "agent-006",
+    name: "HR Onboarding Bot",
+    description: "Automates the new employee onboarding process, answering FAQs and guiding through tasks.",
+    status: "Active",
+    category: "Human Resources",
+    pricingModel: "Subscription",
+  },
+  {
+    id: "agent-007",
+    name: "Social Media Scheduler AI",
+    description: "Optimizes and automates your social media content scheduling and posting.",
+    status: "Active",
+    category: "Marketing",
+    pricingModel: "Subscription",
+  },
+  {
+    id: "agent-008",
+    name: "Financial Advisor AI",
+    description: "Provides personalized financial advice and investment insights.",
+    status: "Beta",
+    category: "Finance",
+    pricingModel: "Per-Use",
+  },
+  {
+    id: "agent-009",
+    name: "Legal Document Drafter",
+    description: "Assists in drafting legal documents and contracts with AI accuracy.",
+    status: "Archived",
+    category: "Legal",
+    pricingModel: "Per-Use",
+  },
+  {
+    id: "agent-010",
+    name: "Customer Feedback Analyzer",
+    description: "Analyzes customer feedback from various channels to identify key sentiments and trends.",
+    status: "Active",
+    category: "Customer Service",
+    pricingModel: "Subscription",
+  },
+]
+
+// Simulate async data fetching with SSR
+async function getAgents(): Promise<Agent[]> {
+  // Simulate network delay to demonstrate SSR
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+
+  // In a real application, this would be a fetch call to your API
+  // For this demo, we're returning the mock data directly
+  return mockAgents
+}
+
+// Dynamic metadata based on current filters (in a real app, this could be enhanced)
+export async function generateMetadata(): Promise<Metadata> {
+  const agents = await getAgents()
+
+  return {
+    title: "ArkLab AI Agents Catalog - Discover AI Solutions",
+    description: `Explore ${agents.length} AI agents across various categories including Customer Service, Marketing, Development, and more. Find the perfect AI solution for your business needs.`,
+    keywords:
+      "AI agents, artificial intelligence, automation, business tools, customer service, marketing, development",
+    openGraph: {
+      title: "ArkLab AI Agents Catalog",
+      description: `Discover ${agents.length} AI agents for your business needs`,
+      type: "website",
+    },
+  }
+}
+
+export default async function HomePage() {
+  // Server-side data fetching
+  const agents = await getAgents()
+
+  return <AgentCatalog initialAgents={agents} />
 }

@@ -5,6 +5,7 @@ import "./globals.css"
 import { ReduxProvider } from "@/components/providers/redux-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
