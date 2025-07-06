@@ -195,6 +195,4 @@ npm start
 
 This project was built as a take-home challenge. For any questions or suggestions, please reach out through the provided submission channels.
 
----
 
-Built with ❤️ for ArkLab Frontend Developer Intern Challenge
