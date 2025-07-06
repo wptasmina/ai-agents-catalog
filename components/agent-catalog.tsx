@@ -8,6 +8,7 @@ import { AgentCard } from "./agent-card"
 import { SearchFilters } from "./search-filters"
 import type { Agent } from "@/lib/types"
 import { Bot } from "lucide-react"
+import { ModeToggle } from "./ui/theme-toggle"
 
 interface AgentCatalogProps {
   initialAgents: Agent[]
@@ -24,15 +25,19 @@ export function AgentCatalog({ initialAgents }: AgentCatalogProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b bg-card">
+      <div className="bg-card">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center space-x-3 mb-4">
-            <Bot className="h-8 w-8 text-primary" />
-            <h1 className="text-3xl font-bold">ArkLab AI Agents Catalog</h1>
+          <div className="flex items-center justify-between space-x-3 mb-4">
+            <div className="flex items-center space-x-3 mb-4">
+              <Bot className="h-8 w-8 text-primary" />
+              <h1 className="text-3xl text-center font-bold"><span className="text-blue-900">ArkLab</span> AI Agents Catalog</h1>
+            </div>
+              <div>
+                <ModeToggle />
+              </div>
           </div>
           <p className="text-muted-foreground text-lg max-w-2xl">
-            Discover and explore our comprehensive catalog of AI agents designed to enhance your business operations
-            across various domains.
+            Discover and explore our comprehensive catalog of AI agents designed to enhance your business operations across various domains.
           </p>
         </div>
       </div>
