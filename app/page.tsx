@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
 import { AgentCatalog } from "@/components/agent-catalog"
-import { Agent } from "@/lib/types"
-
-
+import type { Agent } from "@/lib/types"
 
 // Mock data - in a real application, this would come from an API or database
 const mockAgents: Agent[] = [
@@ -90,11 +88,8 @@ const mockAgents: Agent[] = [
 
 // Simulate async data fetching with SSR
 async function getAgents(): Promise<Agent[]> {
-  // Simulate network delay to demonstrate SSR
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await new Promise((resolve) => setTimeout(resolve, 2000)) 
 
-  // In a real application, this would be a fetch call to your API
-  // For this demo, we're returning the mock data directly
   return mockAgents
 }
 
